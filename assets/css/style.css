@@ -1,0 +1,43 @@
+body {
+    font-family: 'Abril Fatface', cursive;
+    margin: 0;
+}
+a{
+    color:#DCE1DE;
+}
+.section {
+    height: 100vh;
+}
+
+#home{
+    background-color: #49A078;
+}
+#aboutMe {
+    background-color:#216869;
+}
+#portfolio {
+    background-color:#1f2421;
+}
+#contact {
+    background-color:#9cc5a1;
+}
+.navbar{
+    background-color: #1f2421;
+}
+.nav-item:hover{
+    border-bottom-style: solid;
+    cursor: pointer;
+    color: #DCE1DE;
+
+}
+.project{
+    margin:8px;
+}
+.card{
+    background-color: #DCE1DE;
+}
+div.card {
+   
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+  }

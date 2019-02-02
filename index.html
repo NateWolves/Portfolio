@@ -11,60 +11,81 @@
     
 </head>
 <body>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-                <a class="navbar-brand" href="#">Nathan Wolverton</a>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="https://natewolves.github.io/Portfolio/">Nathan Wolverton</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="head">
                   <ul class="navbar-nav justify-content-right">
-                    <li class="nav-item">
+                    <li class="nav-item align-bottom">
                     <span class="nav-link" id="navHome">Home</span>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item align-bottom">
                     <span class="nav-link" id="navAboutMe">About Me</span>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item align-bottom">
                     <span class="nav-link" id="navPortfolio">Portfolio</span>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item align-bottom">
                     <span class="nav-link" id="navContact">Contact Me</span>
                     </li>
                   </ul>
                 </div>
-              </nav>
-    <div class="section col-md-12" id="home">
-    <canvas></canvas>
-    </div>
-    <div class="section col-md-12" id="aboutMe">
-            <div class="card">
-                    <div class="card-body">
-                          <h5 class="card-title">About Me</h5>
-                        <div class="row">
-                            <div class="col-md-4" class="card" style="width: 18rem;">
-                                <img src="assets/images/Profile pic placeholder1.jpg" class="card-img-top" class="rounded" id="Profilepic" alt="My profile pic">
-                            </div>
-                            <div class="col-md-8" class="card-body">
-                               <p>I am a Kansas City native with a passion for technology and a life-long learner. 
-
-                                    I love problem solving with technology. My goal is to never stop adding to my skill set so I can tackle any challenge ahead of me.
-                                    
-                                    My experience in web development is across the stack with technologies that include; HTML5, CSS, JavaScript, Bootstrap, React.js, Node.js, Bookshelf.js, MongoDB, MySQL, and Git.</p>
-                            </div>
-                        </div>
-                          <a href="portfolio.html" class="btn btn-primary" style="margin: 5px">See My Work</a>
-                    </div>
+                <div class="float-right">
+                    
+                    <a href="https://github.com/NateWolves">
+                        <img class="rounded-circle" style="height:20px" src="assets/images/github-icon.png">
+                    </a>
                 </div>
+            </div>
+</nav>
+            
+<div class="section col-md-12" id="home">
+    <canvas></canvas>
+</div>
 
 
-
+<div class="section col-md-12" id="aboutMe">
+    <div class="buffer"></div>
+    <div class="container">
+            <h2> About Me</h2>
+            <div class="row">
+                    <div class="card col-md-4">
+                            <img src="assets/images/Profile pic placeholder1.jpg" class="card-img-top rounded-circle"  id="Profilepic" alt="My profile pic">
+                            <div class="card-body">
+                               <p>I am a Kansas City native with a passion for technology and a life-long learner. 
+                                    I love problem solving with technology. My goal is to never stop adding to my skill set so I can tackle any challenge ahead of me.
+                                    My experience in web development is across the stack with technologies that include; HTML5, CSS, JavaScript, Bootstrap, React.js, Node.js, Bookshelf.js, MongoDB, MySQL, and Git.
+                                </p>
+                            </div>
+                    </div>     
+              
+                <div class="card col-md-4 float-right" id="education">
+                       
+                            <div class="card-body degree">
+                                <h5>University of Kansas</h5>
+                                <span>Web Development Coding Bootcamp, Graduated Spring 2019</span>
+                                <span> >JavaScript, Node.js, React.js and more.</span>
+                            </div>
+                            <div class="card-body degree">
+                                    <h5>University of Kansas City Missouri</h5>
+                                    <span>Bachelors in Business Administration, Graduated Spring 2012</span>
+                                    <span> >BBA with an emphasis in Marketing</span>
+                            </div>
+                </div>
+            </div>
     </div>
+</div>
 
 
-    <div class="section col-md-12" id="portfolio">
-    <div class="card">
-      <h5 class="card-title">Portfolio</h5>
-      <div class="card-body">
+<div class="section" id="portfolio">
+    <div class="buffer"></div>
+    <div class="container">
+      <h2 class="">Portfolio</h2>
+
         <div class="row justify-content-center">
 
                 <div class="card col-md-3 bg-dark text-white project">
@@ -138,29 +159,37 @@
             </div>
 
         </div>
+         </div>
+        </div>    
     </div>
 </div>    
-    </div>    
     <div class="section col-md-12" id="contact">
+            <div class="buffer"></div>
             <div class="container">
-                            <div class="card">
+
+                            <div class="card contact-form">
                                 <div class="card-body">
                                       <h5 class="card-title">Contact Me</h5>
-                                <form>
+                                <form method="POST" action="mailto:wolverton.nathan@gmail.com">
                                     <div class="form-group">
                                       <label for="Nameinput">Name</label>
-                                      <input type="Name" class="form-control" id="InputName" placeholder="Marty McFly">
+                                      <input type="Name" class="form-control" id="InputName" placeholder="Doc Brown">
                                     </div>
                                     <div class="form-group">
                                             <label for="InputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="back2thefuture@yahoo.com">
+                                            <input type="email" name="from" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="back2thefuture@yahoo.com">
+                                            <small id="emailHelp" class="form-text text-muted"></small>
+                                    </div>
+                                    <div class="form-group">
+                                            <label for="InputSubject">Subject</label>
+                                            <input type="text" class="form-control" name="subject" id="subject" aria-describedby="emailHelp" placeholder="I need your help Marty">
                                             <small id="emailHelp" class="form-text text-muted"></small>
                                     </div>
                                     <div class="form-group">
                                                 <label for="FormControlTextarea1">Message me</label>
-                                                <textarea class="form-control" id="FormControlTextarea1" rows="3"></textarea>
+                                                <textarea class="form-control" id="FormControlTextarea1" rows="4" placeholder="Roads?! Where were going we don't need roads."></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" value="Send Email" class="btn btn-dark">Send Email</button>
                                 </form>
                                 </div>
                             </div>

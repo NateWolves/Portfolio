@@ -176,114 +176,220 @@ $("#navContact").click(function() {
 
 
 
-// const canvas = document.querySelector('canvas')
-// const c = canvas.getContext('2d');
+const canvas = document.querySelector('canvas')
+const c = canvas.getContext('2d');
 
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-// let mouse = {
-//     x: innerWidth / 2,
-//     y: innerHeight / 2,
-// };
+let mouse = {
+    x: innerWidth / 2,
+    y: innerHeight / 2,
+};
 
-// let colors = [
-//     '#216869',
-//     '#49A078',
-//     '#9CC5A1',
-//     '#1F2421',
-//      '#DCE1DE'
-// ];
+const colors = [
+    '#216869',
+    '#49A078',
+    '#9CC5A1',
+    '#1F2421',
+     '#DCE1DE'
+];
 
-// const gravity = 1;
+let mouseIsDown = false;
+canvas.addEventListener('mousedown', function(e){
+    mouseIsDown = true;
+    let mx = mouse.x;
+    let my = mouse.y;
+    for (let i = 0 ; i < ballArray.length; i++){}
+    if (getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 2 < 0 ){
 
-// addEventListener("mousemove", function(event){
-//     mouse.x = event.clientX;
-//     mouse.y = event.clientY;
-// });
-// // resizing our canvas on a screen change
-// // addEventListener("resize", function(){
-// //     canvas.width = innerWidth;
-// //     canvas.height = innerHeight;
-// //     init();
-// // })
+    }
 
-// // takes an array of colors and returns a random color
-// function randomColor(colors) {
-//     return colors[Math.floor(Math.random() * colors.length)]
-// };
+})
 
-// // Utility function that creates a random integer
-// function randomInteger (min, max){
-//     return Math.floor(Math.random() * (max - min + 1) + min);
-// };
+addEventListener("mousemove", function(event){
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+});
 
-// // Pythagorean theory applied to calculate distance between objects
-// function getDistance(x1, y1, x2, y2){
-//     let xDistance = x2 - x1;
-//     let yDistance = y2 - y1;
-//     // a^2 + b^2 = c^2
-//     return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+// resizing our canvas on a screen change
+addEventListener("resize", function(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    init();
+})
+
+// takes an array of colors and returns a random color
+function randomColor(colors) {
+    return colors[Math.floor(Math.random() * colors.length)]
+};
+
+// Utility function that creates a random integer
+function randomInteger (min, max){
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+// Pythagorean theory applied to calculate distance between objects
+function getDistance(x1, y1, x2, y2){
+    let xDistance = x2 - x1;
+    let yDistance = y2 - y1;
+    // a^2 + b^2 = c^2
+    return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
  
-// }
+}
 
-// // Creating our ball object to put on the canvas **Uppercase your object
-// function Particle(x, y, dy, radius, color){
-//     // passing our values to the object
-//     this.x = x;
-//     this.y = y;
-//     this.dy = dy;
-//     this.radius = radius;
-//     this.color = color;
+function rotate(velocity, angle){
+    const rotatedVelocities = {
+        x: velocity.x * Math.cos(angle) - 
+            velocity.y * Math.sin(angle),
+        y: velocity.x * Math.sin(angle) +
+            velocity.y * Math.cos(angle)
+    };
+    return rotatedVelocities;
+};
 
-//     this.update = particles => {
-//         // for loop
-//         // if ( this === particles[i] continue){
-//             // if (distance( this.x, this.y, particles[i].x, particles[i].y))}
+
+function collision(ball, otherBall){
+    const xVelocityDiff = ball.velocity.x - otherBall.velocity.x;
+    const yVelocityDiff = ball.velocity.y - otherBall.velocity.y;
+
+    const xDist = otherBall.x - ball.x;
+    const yDist = otherBall.y - ball.y;
+
+    // Preventing any overlap between balls
+    if(xVelocityDiff * xDist + yVelocityDiff * yDist >= 0){
+
+        // Getting an angle between the two colliding balls
+        const angle = Math.atan2(otherBall.y - ball.y, otherBall.x - ball.x);
+
+        // Storing mass for easier access
+        const m1 = ball.mass;
+        const m2 = otherBall.mass;
+
+        // Velocity before equation
+        const u1 = rotate(ball.velocity, angle)
+        const u2 = rotate(otherBall.velocity, angle)
+        //  Velocity after collision
+        const v1 = {x: u1.x * (m1 - m2) / (m1 + m2) + u2.x * 2 * m2 / (m1 + m2), y: u1.y};
+        const v2 = {x: u2.x * (m1 - m2) / (m1 + m2) + u1.x * 2 * m2 / (m1 + m2), y: u2.y};
+        // Final velocity after rotating axis back to  original location
+        const vFinal1 = rotate(v1, -angle);
+        const vFinal2 = rotate(v2, -angle);
+        // Swapping ball velocities for a bounce effect
+        ball.velocity.x = vFinal1.x * 0.9;
+        ball.velocity.y = vFinal1.y * 0.9;
+
+        otherBall.velocity.x = vFinal2.x * 0.9;
+        otherBall.velocity.y = vFinal2.y * 0.9;
+    }
+}
+
+const gravity = 0.5;
+// Creating our ball object to put on the canvas 
+function Ball(x, y, dx, dy,  radius){
+    // passing our values to the object
+    this.x = x;
+    this.y = y;
+    this.velocity = {
+        x: dx,
+        y: dy,
+    };
+    this.radius = radius;
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.mass = 1;
+    this.opacity = 0.2;
+
+    this.update = ballArray => {
+        this.draw();
+
+        for ( let i = 0; i < ballArray.length; i++){
+            // never comparing a ball to itself
+            if(this === ballArray[i]) continue;
+            if (getDistance(this.x, this.y, ballArray[i].x , ballArray[i].y) - this.radius * 2 < 0) {
+                console.log("Ball has collided.")
+                collision( this, ballArray[i]);
+            }
+        }
+
+        if (this.x - this.radius <= 0 || this.x + this.radius + this.velocity.x >= canvas.width) {
+            this.velocity.x = -this.velocity.x;
+        }
+
+        // This is applying the affect of gravity to our object when it collides with the bottom edge
+        if (this.y - this.radius <= 0 || this.y + this.radius + this.velocity.y >= canvas.height){
+            // applying friction
+            this.velocity.y = -this.velocity.y * 1;
+        } else {
+            this.velocity.y += gravity;
+        }
+        
     
-//         if (this.y + this.radius > canvas.height){
-//             this.dy = -this.dy * 0.8;
-//         } else { 
-//             this.dy += gravity;
-//             console.log(this.dy);
-//         }
-//         this.y += this.dy; 
-//         this.draw();
-//     };
+        //  Adding reaction to the mouse 
+        if (getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 2 < 0 ){
+            this.radians += 0.05;
 
-//     this.draw = () => {
-//         c.beginPath();
-//         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-//         c.fillStyle = this.color;
-//         c.fill();
-//         c.closePath();
+            this.opacity += 0.06;
+        } else if ( this.opacity > 0) {
+            this.opacity -= 0.02;
 
-//     }
-// };
-// let particle;
+            this.opacity = Math.max(0, this.opacity);
+        }
 
-// function init() {
-//     particle = new Particle(canvas.width / 2, canvas.height / 2, 2, 30, 'red');
-// // for ()
-//     if (i !==0){
-//         for( let j =0; j < particles.length; j++){
-//         if(distance(x, y, particles[j].x, particles[j].y) - radius * 2 < 0 ){
-//             x = Math.random() * innerWidth;
-//             j = -1;
-//         }};
-//     }
-// }
-// function animate() {
-//     requestAnimationFrame(animate);
-//     c.clearRect(0,0, canvas.width, canvas.height);
-//     particle.update();
-//     // detecting collision
-//     if (getDistance(circle1.x, circle1.y, circle2.x, circle2.x) < circle1.radius + circle2.radius){
-//       circle1.color = 'red';
-//     } else { 
-//         circle1.color = 'black';
-//     }
-//     particle.update(particles);
-// }
-// init();
-// animate();
+        this.x += this.velocity.x; 
+        this.y += this.velocity.y;
+        
+        
+    };
+
+    this.draw = () => {
+        c.beginPath();
+        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+        c.save();
+        c.globalAlpha = this.opacity;
+        c.fillStyle = this.color;
+        c.fill();
+        c.restore();
+        c.stroke();
+        c.closePath();
+
+    }
+};
+
+let ballArray;
+let ball;
+function init() {
+    ballArray = [];
+    for (let i = 0; i < 20; i++){
+        let radius = 50;
+        let x = randomInteger(radius, canvas.width - radius);
+        let y = randomInteger(radius, canvas.height- radius);
+        let dx = randomInteger(0, 0);
+        let dy = randomInteger(0, 0);
+        if ( i !== 0){
+            for ( let j = 0 ; j < ballArray.length; j++){
+                if (getDistance(x, y, ballArray[j].x , ballArray[j].y) - radius * 2 < 0) {
+                   
+                    x = randomInteger(radius, canvas.width - radius);
+                    y = randomInteger(radius, canvas.height- radius);
+                    
+                    j = -1;
+                }
+
+            }
+        }
+        ballArray.push(new Ball(x, y, dx, dy, radius))
+    }
+};
+function animate() {
+    requestAnimationFrame(animate);
+    c.clearRect(0,0, canvas.width, canvas.height);
+    
+    ballArray.forEach( ball => {
+        ball.update(ballArray);
+    })
+    // detecting collision
+ 
+}
+
+init();
+animate();

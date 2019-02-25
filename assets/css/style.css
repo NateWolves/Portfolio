@@ -8,22 +8,25 @@ a{
 /* .container{
     display: flex;
 } */
-.section {
-    height: 100vh;
-}
+
 .card-title {
     border-bottom-style: solid;
     border-bottom: #216869;
 
 }
 #home{
+    position: relative;
     background-color: #49A078;
+    height: 100vh;
 }
 #aboutMe {
+    height:100%;
     background-color:#216869;
+   
 }
 #portfolio {
     background-color:#9cc5a1;
+    height:100%;
 
 }
 #contact {
@@ -36,10 +39,14 @@ a{
 .nav-link {
     color: #DCE1DE;
 }
+.nav-item{
+    border-bottom-style: solid;
+    border-bottom-color: transparent;
+}
 .nav-item:hover{
     border-bottom-style: solid;
     cursor: pointer;
-    color: #DCE1DE;
+    border-bottom-color: #DCE1DE;
 }
 .project{
     margin:8px;
@@ -60,3 +67,31 @@ div.card {
 .buffer {
     height:60px;
 }
+
+#welcome{
+    position: absolute;
+    top:30%;
+    background-color: transparent;
+    color: white;
+    margin: 0px auto 0px auto;
+}
+
+#skillList{
+    list-style: none;
+    margin:0;
+    padding:0;
+}
+.skillListItem{
+    display: inline-block;
+    vertical-align: middle;
+}
+.skillIcon{
+    width: 100px;
+    height: auto;
+}
+/* Clear floats after image containers */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

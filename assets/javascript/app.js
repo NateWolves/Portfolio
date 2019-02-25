@@ -19,88 +19,6 @@ $("#navContact").click(function() {
         'slow');
 });
 
-// const canvas = document.querySelector('canvas')
-// const c = canvas.getContext('2d');
-
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-// rectangle
-// c.fillStyle = 'rgba(255, 0, 0, 0.5)'
-// c.fillRect(100,100, 100,100);
-// lines
-// c.beginPath();
-// c.moveTo(50, 300);
-// c.lineTo(300, 200);
-// c.strokeStyle = "#fa34a3";
-// c.stroke();
-
-
-// // circle
-// c.beginPath();
-// c.arc( 300, 300, 30, 0, Math.PI * 2, false);
-// c.strokeStyle = "gray";
-// c.stroke();
-
-// for (let i =0 ; i < 3; i++){
-//     let x = Math.random() * window.innerWidth;
-//     let y = Math.random() * window.innerHeight;
-//     c.beginPath();
-//     c.arc( x, y, 30, 0, Math.PI * 2, false);
-//     c.strokeStyle = "gray";
-//     c.stroke();
-// }
-
-// let xNum = Math.random() * innerWidth;
-// let yNum = Math.random() * innerHeight;
-// let dx = (Math.random() - 0.5) * 8;
-// let dy = 4;
-// let radius = 30;
-
-// function Circle(x, y, dx, dy, radius) {
-//     this.x = x;
-//     this.y = y;
-//     this.dx = dx;
-//     this.dy = dy;
-//     this.radius = radius;
-
-//     this.draw = function(){
-//         c.beginPath();
-//         c.arc( this.x, this.y, this.radius, 0, Math.PI * 2, false);
-//         c.strokeStyle = "gray";
-//         c.stroke();
-//     }
-
-//     // Bouncing our circles off the walls
-//     this.update = function(){
-//         if ( this.x + this.radius > innerWidth || this.x - this.radius < 0){
-//             this.dx = -this.dx;
-//         }
-//         if ( this.y + this.radius > innerHeight || this.y - this.radius < 0){
-//             this.dy = -this.dy;
-//         }
-//         this.x += this.dx; 
-//         this.y += this.dy;
-        
-//         this.draw();
-//     }
-// }
-// let circle = new Circle(200, 200, 3,3,30);
-
-// let circleArray = [];
-
-// for (let i = 0; i < 10; i++){
-//     let radius = 30;
-//     let xNum = Math.random() * (innerWidth - radius * 2) + radius;
-//     let yNum = Math.random() * (innerHeight- radius * 2) + radius;
-//     let dx = (Math.random() - 0.5) * 5;
-//     let dy = (Math.random() - 0.5) * 5;
-
-//     circleArray.push(new Circle(xNum, yNum, dx, dy, radius));
-// }
-
-
-
-
 
 // // creating particles
 // function particle(x, y, radius, color){
@@ -194,20 +112,17 @@ const colors = [
     '#1F2421',
      '#DCE1DE'
 ];
-
+let mouseIsUp;
 let mouseIsDown = false;
-canvas.addEventListener('mousedown', function(e){
+canvas.addEventListener('mousedown', function(){
     mouseIsDown = true;
-    let mx = mouse.x;
-    let my = mouse.y;
-    for (let i = 0 ; i < ballArray.length; i++){}
-    if (getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 2 < 0 ){
-
-    }
-
+})
+addEventListener("mouseup", function(){
+    mouseIsDown = false;
 })
 
-addEventListener("mousemove", function(event){
+
+canvas.addEventListener("mousemove", function(event){
     mouse.x = event.clientX;
     mouse.y = event.clientY;
     console.log(mouse.y)
@@ -293,7 +208,7 @@ function resolveCollision(particle, otherParticle) {
         otherParticle.velocity.y = vFinal2.y * .8;
     }
 }
-const gravity = 0.1;
+const gravity = 0.5;
 // Creating our ball object to put on the canvas 
 function Ball(x, y, dx, dy, radius){
     // passing our values to the object
@@ -345,6 +260,9 @@ function Ball(x, y, dx, dy, radius){
             this.velocity.x = -this.velocity.x;
             this.x = canvas.width - this.radius;
         }
+        if( this.y - this.radius <= 0){
+            this.velocity.y = -this.velocity.y;
+        }
 
         // This is applying the affect of gravity to our object when it collides with the bottom edge
         if (this.y + this.radius + this.velocity.y >= canvas.height){
@@ -357,7 +275,9 @@ function Ball(x, y, dx, dy, radius){
             
             this.velocity.y += gravity;
         }
-        
+        if(getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 4 < 0 && mouseIsDown === true){
+            this.velocity.y -= 2;
+        }
     
         //  Adding reaction to the mouse 
         if (getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 4 < 0 ){

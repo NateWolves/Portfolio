@@ -97,7 +97,7 @@ $("#navContact").click(function() {
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
+canvas.width = window.innerWidth -32;
 canvas.height = window.innerHeight;
 
 let mouse = {
@@ -125,12 +125,12 @@ addEventListener("mouseup", function(){
 canvas.addEventListener("mousemove", function(event){
     mouse.x = event.clientX;
     mouse.y = event.clientY;
-    console.log(mouse.y)
+
 });
 
 // resizing our canvas on a screen change
 addEventListener("resize", function(){
-    canvas.width = innerWidth;
+    canvas.width = innerWidth -32;
     canvas.height = innerHeight;
     init();
 })

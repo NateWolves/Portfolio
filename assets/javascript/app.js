@@ -20,6 +20,40 @@ $("#navContact").click(function() {
 });
 
 
+
+document.addEventListener("scroll", function(){
+    let topOfPage = $(window).scrollTop();
+    let skills = $(".skillIcon").offset().top;
+    let distanceToSkills = (skills - topOfPage);
+    let profilePic = $('.profilePic').offset().top;
+    let distanceToProfile = (profilePic - topOfPage);
+    let project = $('.project').offset().top;
+    let distanceToProject = (project - topOfPage);
+    console.log(distanceToProfile);
+
+    if(distanceToSkills < 500){
+    $(".skillIcon").addClass("active");
+    } else {
+        $(".skillIcon").removeClass("active");
+    };
+    if(distanceToProfile < 500){
+        $(".profilePic").addClass("active");
+    } else {
+        $(".profilePic").removeClass("active");
+    };
+    if(distanceToProject < 500){
+        $(".project").addClass("active");
+    } else {
+        $(".project").removeClass("active");
+    }
+});
+
+
+
+
+
+
+
 // // creating particles
 // function particle(x, y, radius, color){
 //     this.x= x;

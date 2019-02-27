@@ -49,14 +49,16 @@ a{
 #education {
     text-align:right;
 }
-#profilePic{
-    max-width: 300px;
-}
+
 .card-title{
     border-bottom-style:solid;
     border-bottom-color: black;
 }
-
+.project{
+    transition: all 0.3s ease;
+    opacity: 0.66;
+    filter: grayscale(100%);
+}
 .navbar{
     background-color: #1f2421;
 }
@@ -110,9 +112,25 @@ div.card {
     vertical-align: middle;
 }
 .skillIcon{
+    
     width: 100px;
     height: auto;
+    transition: all 0.3s ease;
+    opacity: 0.66;
+    filter: grayscale(100%);
 }
+.profilePic{
+    max-width: 300px;
+    transition: all 0.3s ease;
+    opacity: 0.66;
+    filter: grayscale(100%);
+}
+.active{
+    filter:none;
+    opacity: 1;
+}
+
+
 /* Clear floats after image containers */
 .row::after {
     content: "";

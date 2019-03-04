@@ -32,24 +32,18 @@ a{
     height: 100vh;
 }
 #aboutMe {
-
-    background-color:#216869;
-   
+    height: 100vh;
 }
 #profile{
     text-align: left;
+}
 
-}
-#portfolio {
-    background-color:#9cc5a1;
-}
-#contact {
-    background-color:#1f2421;
-}
 #education {
     text-align:right;
 }
-
+#contact{
+    height: 100vh;
+}
 .card-title{
     border-bottom-style:solid;
     border-bottom-color: black;
@@ -75,20 +69,18 @@ a{
     border-bottom-color: #DCE1DE;
 }
 .project{
-    margin:8px;
+    margin: 10px 0px  0px 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .project-img{
     opacity: 0.8;
 }
 .card{
-    background-color: #DCE1DE;
-
-}
-div.card {
-   
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color:transparent;
     text-align: center;
-  }
+    border-style: none;
+}
+
 
 .buffer {
     height:60px;

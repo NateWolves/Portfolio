@@ -31,17 +31,17 @@ document.addEventListener("scroll", function(){
     let distanceToProject = (project - topOfPage);
     console.log(distanceToProfile);
 
-    if(distanceToSkills < 500){
+    if(distanceToSkills < 600){
     $(".skillIcon").addClass("active");
     } else {
         $(".skillIcon").removeClass("active");
     };
-    if(distanceToProfile < 500){
+    if(distanceToProfile < 300){
         $(".profilePic").addClass("active");
     } else {
         $(".profilePic").removeClass("active");
     };
-    if(distanceToProject < 500){
+    if(distanceToProject < 400){
         $(".project").addClass("active");
     } else {
         $(".project").removeClass("active");
@@ -141,7 +141,6 @@ let mouse = {
 
 const colors = [
     '#216869',
-    '#49A078',
     '#9CC5A1',
     '#1F2421',
      '#DCE1DE'
@@ -254,7 +253,7 @@ function Ball(x, y, dx, dy, radius){
     };
     this.radius = radius;
     this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.mass = 1;
+    this.mass = radius * .25;
     this.opacity = 0.2;
 
     this.update = ballArray => {
@@ -347,8 +346,8 @@ let ballArray;
 let ball;
 function init() {
     ballArray = [];
-    for (let i = 0; i < 20; i++){
-        let radius = randomInteger (50, 50);
+    for (let i = 0; i < 30; i++){
+        let radius = randomInteger (5, (canvas.width/23));
         let x = randomInteger(radius, canvas.width - radius);
         let y = randomInteger(radius, canvas.height- radius);
         let dx = randomInteger(-1, 1);

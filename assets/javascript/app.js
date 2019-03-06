@@ -147,15 +147,16 @@ const colors = [
 ];
 let mouseIsUp;
 let mouseIsDown = false;
-canvas.addEventListener('mousedown', function(){
+
+canvas.addEventListener('pointerdown', function(){
     mouseIsDown = true;
 })
-addEventListener("mouseup", function(){
+addEventListener("pointerup", function(){
     mouseIsDown = false;
 })
 
 
-canvas.addEventListener("mousemove", function(event){
+canvas.addEventListener("pointermove", function(event){
     mouse.x = event.clientX;
     mouse.y = event.clientY;
 
@@ -346,7 +347,7 @@ let ballArray;
 let ball;
 function init() {
     ballArray = [];
-    for (let i = 0; i < 30; i++){
+    for (let i = 0; i < 45; i++){
         let radius = randomInteger (5, (canvas.width/23));
         let x = randomInteger(radius, canvas.width - radius);
         let y = randomInteger(radius, canvas.height- radius);

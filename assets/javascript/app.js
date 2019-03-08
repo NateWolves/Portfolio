@@ -29,7 +29,7 @@ document.addEventListener("scroll", function(){
     let distanceToProfile = (profilePic - topOfPage);
     let project = $('.project').offset().top;
     let distanceToProject = (project - topOfPage);
-    console.log(distanceToProfile);
+   
 
     if(distanceToSkills < 600){
     $(".skillIcon").addClass("active");
@@ -131,8 +131,10 @@ document.addEventListener("scroll", function(){
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d');
 
-canvas.width = window.innerWidth -32;
-canvas.height = window.innerHeight;
+// setting initial width and height 
+// previously used inner.width/height
+canvas.width = ($("#home").width() -4);
+canvas.height = $("#home").height();
 
 let mouse = {
     x: innerWidth / 2,
@@ -147,27 +149,45 @@ const colors = [
 ];
 let mouseIsUp;
 let mouseIsDown = false;
+let shakex = 0;
+let shakey = 0;
 
-canvas.addEventListener('pointerdown', function(){
+canvas.addEventListener('mousedown', function(){
     mouseIsDown = true;
 })
-addEventListener("pointerup", function(){
+addEventListener("mouseup", function(){
     mouseIsDown = false;
 })
 
 
-canvas.addEventListener("pointermove", function(event){
+canvas.addEventListener("mousemove", function(event){
     mouse.x = event.clientX;
     mouse.y = event.clientY;
-
 });
+
+// Adding our motion event for mobile interactivity i.e. Shaking balls
+function handleMotionEvent(event) {
+    shakex = event.accelerationIncludingGravity.x;
+    shakey = event.accelerationIncludingGravity.y;
+}
+
+window.addEventListener("devicemotion", handleMotionEvent, true);
+//check if shake is supported or not.
+if(!("ondevicemotion" in window)){alert("Not Supported");}
 
 // resizing our canvas on a screen change
 addEventListener("resize", function(){
-    canvas.width = innerWidth -32;
-    canvas.height = innerHeight;
+    if (innerWidth < 800){
+        return
+    } else {
+    canvas.width = ($("#home").width() -4);
+    canvas.height = $("#home").height();
     init();
-})
+    };
+});
+
+
+
 
 // takes an array of colors and returns a random color
 function randomColor(colors) {
@@ -325,7 +345,8 @@ function Ball(x, y, dx, dy, radius){
 
         this.x += this.velocity.x; 
         this.y += this.velocity.y;
-        
+        this.x += shakex;
+        this.y += shakey;
         
     };
 

@@ -133,7 +133,7 @@ const c = canvas.getContext('2d');
 
 // setting initial width and height 
 // previously used inner.width/height
-canvas.width = ($("#home").width() -4);
+canvas.width = $("#home").width();
 canvas.height = $("#home").height();
 
 let mouse = {
@@ -149,6 +149,7 @@ const colors = [
 ];
 let mouseIsUp;
 let mouseIsDown = false;
+let isShaken = false;
 let shakex = 0;
 let shakey = 0;
 
@@ -167,20 +168,22 @@ canvas.addEventListener("mousemove", function(event){
 
 // Adding our motion event for mobile interactivity i.e. Shaking balls
 function handleMotionEvent(event) {
+    isShaken = true;
+    console.log(isShaken);
     shakex = event.accelerationIncludingGravity.x;
     shakey = event.accelerationIncludingGravity.y;
 }
 
 window.addEventListener("devicemotion", handleMotionEvent, true);
 //check if shake is supported or not.
-if(!("ondevicemotion" in window)){alert("Not Supported");}
+if(!("ondevicemotion" in window)){alert("Your browser doesnt let you shake these balls :(");}
 
 // resizing our canvas on a screen change
 addEventListener("resize", function(){
     if (innerWidth < 800){
         return
     } else {
-    canvas.width = ($("#home").width() -4);
+    canvas.width = $("#home").width();
     canvas.height = $("#home").height();
     init();
     };
@@ -324,7 +327,7 @@ function Ball(x, y, dx, dy, radius){
             this.y = canvas.height - this.radius;
             // applying friction 
             this.velocity.y = -this.velocity.y * .8;
-        }
+        }   
          else {
             
             this.velocity.y += gravity;

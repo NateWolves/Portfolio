@@ -265,11 +265,11 @@ function resolveCollision(particle, otherParticle) {
         const vFinal2 = rotate(v2, -angle);
 
         // Swap particle velocities for realistic bounce effect
-        particle.velocity.x = vFinal1.x * .8;
-        particle.velocity.y = vFinal1.y * .8;
+        particle.velocity.x = vFinal1.x * 1;
+        particle.velocity.y = vFinal1.y * 1;
 
-        otherParticle.velocity.x = vFinal2.x * .8;
-        otherParticle.velocity.y = vFinal2.y * .8;
+        otherParticle.velocity.x = vFinal2.x * 1;
+        otherParticle.velocity.y = vFinal2.y * 1;
     }
 }
 const gravity = 0.5;
@@ -326,7 +326,9 @@ function Ball(x, y, dx, dy, radius){
         }
         if( this.y - this.radius <= 0){
             this.velocity.y = -this.velocity.y;
+            this.y = 0 + this.radius;
         }
+
 
         // This is applying the affect of gravity to our object when it collides with the bottom edge
         if (this.y + this.radius + this.velocity.y >= canvas.height){
@@ -355,8 +357,8 @@ function Ball(x, y, dx, dy, radius){
 
         this.x += this.velocity.x; 
         this.y += this.velocity.y;
-        this.x += shakex;
-        this.y += shakey;
+        this.x += -shakex;
+        this.y += -shakey;
         
     };
 

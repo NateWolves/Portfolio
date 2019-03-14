@@ -1,3 +1,4 @@
+
 $("#navHome").click(function() {
     $('html,body').animate({
         scrollTop: $("#home").offset().top},
@@ -152,6 +153,10 @@ let mouseIsDown = false;
 let isShaken = false;
 let shakex = 0;
 let shakey = 0;
+let isPhone = false;
+if (canvas.width < 900){
+    isPhone = true;
+}
 
 canvas.addEventListener('mousedown', function(){
     mouseIsDown = true;
@@ -171,17 +176,19 @@ function handleMotionEvent(event) {
     isShaken = true;
     console.log(isShaken);
     shakex = event.accelerationIncludingGravity.x;
-    shakey = event.accelerationIncludingGravity.y;
+    shakey = -event.accelerationIncludingGravity.y;
+    console.log(shakex+ " , "+ shakey);
 }
 
 window.addEventListener("devicemotion", handleMotionEvent, true);
 //check if shake is supported or not.
-if(!("ondevicemotion" in window)){alert("Your browser doesnt let you shake these balls :(");}
+// if(!("ondevicemotion" in window)){alert("Your browser doesnt let you shake these balls :(");}
 
 // resizing our canvas on a screen change
 addEventListener("resize", function(){
-    if (innerWidth < 800){
-        return
+    if (innerWidth < 900){
+        isPhone = true;
+    
     } else {
     canvas.width = $("#home").width();
     canvas.height = $("#home").height();
@@ -328,7 +335,7 @@ function Ball(x, y, dx, dy, radius){
             // applying friction 
             this.velocity.y = -this.velocity.y * .8;
         }   
-         else {
+         else if(!isPhone){
             
             this.velocity.y += gravity;
         }

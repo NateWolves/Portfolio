@@ -1,4 +1,4 @@
-
+// Navigation buttons
 $("#navHome").click(function() {
     $('html,body').animate({
         scrollTop: $("#home").offset().top},
@@ -21,7 +21,7 @@ $("#navContact").click(function() {
 });
 
 
-
+// Setting our fade in for different elements 
 document.addEventListener("scroll", function(){
     let topOfPage = $(window).scrollTop();
     let skills = $(".skillIcon").offset().top;
@@ -51,112 +51,46 @@ document.addEventListener("scroll", function(){
 
 
 
-
-
-
-
-// // creating particles
-// function particle(x, y, radius, color){
-//     this.x= x;
-//     this.y = y;
-//     this.radius = radius;
-//     this.color = color;
-//     this.radians = Math.random() * Math.PI * 2;
-//     this.velocity =  0.1;
-//     this.distanceFromCenter =  randomInteger(50, 120);
-                               
-
-//     this.update = () => {
-//         const lastPoint = {x: this.x, y: this.y};
-//         // this moves our points over time
-//         this.radians += this.velocity;
-
-//         // Drag effect
-//         this.lastMouse.x += (mouse.x - this.lastMouse.x) * 0.05;
-//         this.lastMouse.y += (mouse.y )
-//         // creating circular motion
-//         this.x = x + Math.cos(this.radians) * 50;
-//         this.y = y + Math.sin(this.radians) * 50;
-//         this.draw(lastPoint);
-//     };
-
-//     this.draw = lastPoint => {
-//         c.beginPath();
-//         c.strokeStyle = this.color;
-//         c.lineWidth = this.radius;
-//         c.moveTo(lastPoint.x, lastPoint.y);
-//         c.lineTo(this.x, this.y);
-//         c.stroke();
-//         c.closePath();
-//         // c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-//         // c.fillStyle = this.color;
-//         // c.fill();
-//         // c.closePath();
-//     }
-// }
-
-// let particles;
-// function initilize() {
-//     particles = [];
-
-//     for (let i = 0; i < 50; i ++){
-//         const radius = ( Math.random() * 2) +1;
-//         particles.push( new particle(canvas.width/ 2, canvas.height / 2 , 5 ,'blue'));
-//     }
-//     console.log(particles);
-// }
-
-
-// function animate() {
-//     requestAnimationFrame(animate);
-//     // Clears the page before it draws new objects
-//     // c.clearRect( 0, 0, innerWidth, innerHeight);
-    
-// // Creating an after image effect
-//     c.fillStyle = 'rgba(255, 255, 255, 0.5)';
-//     c.fillRect(0 , 0, canvas.width, )
-
-//     particles.forEach(particle => {
-//         particle.update();
-//     })
-//     for (let i =0; i < circleArray.length; i ++){
-//         circleArray[i].update();
-//     }
-
-// }
-
-// animate();
-
-
-
+// Canvas Section
+// ---------------
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d');
 
 // setting initial width and height 
 // previously used inner.width/height
-canvas.width = $("#home").width();
+canvas.width = inner.width();
 canvas.height = $("#home").height();
 
 let mouse = {
-    x: innerWidth / 2,
-    y: innerHeight / 2,
+    x: 1,
+    y: 0,
 };
 
+// Colors that apply to our balls
 const colors = [
     '#216869',
     '#9CC5A1',
     '#1F2421',
      '#DCE1DE'
 ];
+
 let mouseIsUp;
 let mouseIsDown = false;
 let isShaken = false;
 let shakex = 0;
 let shakey = 0;
+
+// determining if device is a phone 
 let isPhone = false;
 if (canvas.width < 900){
     isPhone = true;
 }
+
+
+screen.orientation.addEventListener("change", function(e) {
+    console.log(screen.orientation.type + " " + screen.orientation.angle);
+    init();
+  }, false);
 
 canvas.addEventListener('mousedown', function(){
     mouseIsDown = true;
@@ -171,7 +105,7 @@ canvas.addEventListener("mousemove", function(event){
     mouse.y = event.clientY;
 });
 
-// Adding our motion event for mobile interactivity i.e. Shaking balls
+// Adding our motion event for mobile interactivity 
 function handleMotionEvent(event) {
     isShaken = true;
     console.log(isShaken);
@@ -188,9 +122,11 @@ window.addEventListener("devicemotion", handleMotionEvent, true);
 addEventListener("resize", function(){
     if (innerWidth < 900){
         isPhone = true;
-    
+        canvas.width = inner.width();
+         canvas.height = $("#home").height();
+    init();
     } else {
-    canvas.width = $("#home").width();
+    canvas.width = inner.width();
     canvas.height = $("#home").height();
     init();
     };
@@ -268,8 +204,8 @@ function resolveCollision(particle, otherParticle) {
         particle.velocity.x = vFinal1.x * 1;
         particle.velocity.y = vFinal1.y * 1;
 
-        otherParticle.velocity.x = vFinal2.x * 1;
-        otherParticle.velocity.y = vFinal2.y * 1;
+        otherParticle.velocity.x = vFinal2.x * .9;
+        otherParticle.velocity.y = vFinal2.y * .9;
     }
 }
 const gravity = 0.5;
@@ -381,7 +317,7 @@ let ball;
 function init() {
     ballArray = [];
     for (let i = 0; i < 45; i++){
-        let radius = randomInteger (5, (canvas.width/23));
+        let radius = randomInteger (5, (canvas.width/15));
         let x = randomInteger(radius, canvas.width - radius);
         let y = randomInteger(radius, canvas.height- radius);
         let dx = randomInteger(-1, 1);

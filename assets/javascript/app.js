@@ -58,12 +58,13 @@ const c = canvas.getContext('2d');
 
 // setting initial width and height 
 // previously used inner.width/height
-canvas.width = inner.width();
+canvas.width = $("#home").width();
 canvas.height = $("#home").height();
+
 
 let mouse = {
     x: 1,
-    y: 0,
+    y: 1,
 };
 
 // Colors that apply to our balls
@@ -71,7 +72,7 @@ const colors = [
     '#216869',
     '#9CC5A1',
     '#1F2421',
-     '#DCE1DE'
+    '#DCE1DE'
 ];
 
 let mouseIsUp;
@@ -80,11 +81,7 @@ let isShaken = false;
 let shakex = 0;
 let shakey = 0;
 
-// determining if device is a phone 
-let isPhone = false;
-if (canvas.width < 900){
-    isPhone = true;
-}
+
 
 
 screen.orientation.addEventListener("change", function(e) {
@@ -98,7 +95,6 @@ canvas.addEventListener('mousedown', function(){
 addEventListener("mouseup", function(){
     mouseIsDown = false;
 })
-
 
 canvas.addEventListener("mousemove", function(event){
     mouse.x = event.clientX;
@@ -114,25 +110,33 @@ function handleMotionEvent(event) {
     console.log(shakex+ " , "+ shakey);
 }
 
-window.addEventListener("devicemotion", handleMotionEvent, true);
+// window.addEventListener("devicemotion", handleMotionEvent, true);
 //check if shake is supported or not.
 // if(!("ondevicemotion" in window)){alert("Your browser doesnt let you shake these balls :(");}
 
 // resizing our canvas on a screen change
 addEventListener("resize", function(){
-    if (innerWidth < 900){
-        isPhone = true;
-        canvas.width = inner.width();
-         canvas.height = $("#home").height();
-    init();
-    } else {
-    canvas.width = inner.width();
+    canvas.width = $("#home").width();
     canvas.height = $("#home").height();
     init();
-    };
 });
 
-
+// determining if device is a phone 
+function detectmob() { 
+    if( navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)
+    ){
+       return true;
+     }
+    else {
+       return false;
+     }
+}
 
 
 // takes an array of colors and returns a random color
@@ -204,8 +208,8 @@ function resolveCollision(particle, otherParticle) {
         particle.velocity.x = vFinal1.x * 1;
         particle.velocity.y = vFinal1.y * 1;
 
-        otherParticle.velocity.x = vFinal2.x * .9;
-        otherParticle.velocity.y = vFinal2.y * .9;
+        otherParticle.velocity.x = vFinal2.x * .8;
+        otherParticle.velocity.y = vFinal2.y * .8;
     }
 }
 const gravity = 0.5;
@@ -273,7 +277,7 @@ function Ball(x, y, dx, dy, radius){
             // applying friction 
             this.velocity.y = -this.velocity.y * .8;
         }   
-         else if(!isPhone){
+         else if (!detectmob()) {
             
             this.velocity.y += gravity;
         }
@@ -316,7 +320,7 @@ let ballArray;
 let ball;
 function init() {
     ballArray = [];
-    for (let i = 0; i < 45; i++){
+    for (let i = 0; i < 20; i++){
         let radius = randomInteger (5, (canvas.width/15));
         let x = randomInteger(radius, canvas.width - radius);
         let y = randomInteger(radius, canvas.height- radius);

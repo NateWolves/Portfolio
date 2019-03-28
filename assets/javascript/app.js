@@ -138,6 +138,10 @@ function detectmob() {
      }
 }
 
+if (detectmob()){
+    $("#canvasInstructions").text("(Shake your phone.")
+}
+
 
 // takes an array of colors and returns a random color
 function randomColor(colors) {
@@ -321,7 +325,7 @@ let ball;
 function init() {
     ballArray = [];
     for (let i = 0; i < 20; i++){
-        let radius = randomInteger (5, (canvas.width/15));
+        let radius = randomInteger (5, (canvas.width/20));
         let x = randomInteger(radius, canvas.width - radius);
         let y = randomInteger(radius, canvas.height- radius);
         let dx = randomInteger(-1, 1);

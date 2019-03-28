@@ -105,8 +105,8 @@ canvas.addEventListener("mousemove", function(event){
 function handleMotionEvent(event) {
     isShaken = true;
     console.log(isShaken);
-    shakex = event.accelerationIncludingGravity.x * .7;
-    shakey = -event.accelerationIncludingGravity.y * .7;
+    shakex = event.accelerationIncludingGravity.x  ;
+    shakey = -event.accelerationIncludingGravity.y ;
     console.log(shakex+ " , "+ shakey);
 }
 
@@ -224,10 +224,17 @@ function Ball(x, y, dx, dy, radius){
     // passing our values to the object
     this.x = x;
     this.y = y;
+    if (detectmob()){
+        this.velocity ={
+            x: shakex,
+            y: shakey
+        }
+    } else {
     this.velocity = {
         x: dx,
         y: dy
-    };
+        };
+    }
     this.radius = radius;
     this.color = colors[Math.floor(Math.random() * colors.length)];
     this.mass = radius * .5;
@@ -303,8 +310,7 @@ function Ball(x, y, dx, dy, radius){
 
         this.x += this.velocity.x; 
         this.y += this.velocity.y;
-        this.x += -shakex;
-        this.y += -shakey;
+
         
     };
 

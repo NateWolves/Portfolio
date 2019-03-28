@@ -105,12 +105,12 @@ canvas.addEventListener("mousemove", function(event){
 function handleMotionEvent(event) {
     isShaken = true;
     console.log(isShaken);
-    shakex = event.accelerationIncludingGravity.x;
-    shakey = -event.accelerationIncludingGravity.y;
+    shakex = event.accelerationIncludingGravity.x * .7;
+    shakey = -event.accelerationIncludingGravity.y * .7;
     console.log(shakex+ " , "+ shakey);
 }
 
-// window.addEventListener("devicemotion", handleMotionEvent, true);
+window.addEventListener("devicemotion", handleMotionEvent, true);
 //check if shake is supported or not.
 // if(!("ondevicemotion" in window)){alert("Your browser doesnt let you shake these balls :(");}
 
@@ -138,8 +138,10 @@ function detectmob() {
      }
 }
 
+console.log(detectmob())
+
 if (detectmob()){
-    $("#canvasInstructions").text("(Shake your phone.")
+    $("#canvasInstructions").text("(Shake your phone.)")
 }
 
 
@@ -228,7 +230,7 @@ function Ball(x, y, dx, dy, radius){
     };
     this.radius = radius;
     this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.mass = radius * .25;
+    this.mass = radius * .5;
     this.opacity = 0.2;
 
     this.update = ballArray => {

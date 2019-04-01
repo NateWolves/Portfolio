@@ -108,15 +108,15 @@ canvas.addEventListener("mousemove", function(event){
 
 // Adding our motion event for mobile interactivity 
 function handleMotionEvent(event) {
-
     shakex = event.accelerationIncludingGravity.x  ;
     shakey = event.accelerationIncludingGravity.y ;
     console.log(shakex+ " , "+ shakey);
 }
 
 window.addEventListener("devicemotion", handleMotionEvent, true);
+
 //check if shake is supported or not.
-// if(!("ondevicemotion" in window)){alert("Your browser doesnt let you shake these balls :(");}
+// if(!("ondevicemotion" in window)){alert("unable to interact with canvas");}
 
 // resizing our canvas on a screen change
 addEventListener("resize", function(){
@@ -144,9 +144,9 @@ function detectmob() {
 
 
 
-if (isPhone){
-    $("#canvasInstructions").text("(Shake your phone.)")
-} else {$("#canvasInstructions").text("(Click and Drag.)")}
+// if (isPhone){
+//     $("#canvasInstructions").text("(Shake your phone.)")
+// } else {$("#canvasInstructions").text("(Click and Drag.)")}
 
 
 // takes an array of colors and returns a random color

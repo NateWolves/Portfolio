@@ -7,48 +7,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Comfortaa|Exo+2" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-md fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="https://natewolves.github.io/Portfolio/">Nathan Wolverton</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="head">
-                  <ul class="navbar-nav justify-content-right">
+                <!-- <button class="dropMenu" type="button" onclick="navButton()" label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+                <!-- <div class="dropdown-content" id="navDrop">
+                    <span class="nav-item nav-link" id="navHome">Home</span>
+                    <span class="nav-item nav-link" id="navAboutMe">About Me</span>
+                    <span class="nav-item nav-link" id="navPortfolio">Portfolio</span>
+                    <span class="nav-item nav-link" id="navContact">Contact Me</span>
+                </div> -->
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#head">
+        <span class="navbar-toggler-icon" id="hamburger"><i class="fas fa-bars"></i></span>
+    </button>
+                <div class="navbar-collapse collapse" id="head">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-right">
                     <li class="nav-item align-bottom">
-                    <span class="nav-link" id="navHome">Home</span>
+                    <span class="nav-link"  data-toggle="collapse" data-target="#head" id="navHome">Home</span>
                     </li>
                     <li class="nav-item align-bottom">
-                    <span class="nav-link" id="navAboutMe">About Me</span>
+                    <span class="nav-link"  data-toggle="collapse" data-target="#head" id="navAboutMe">About Me</span>
                     </li>
                     <li class="nav-item align-bottom">
-                    <span class="nav-link" id="navPortfolio">Portfolio</span>
+                    <span class="nav-link"  data-toggle="collapse" data-target="#head" id="navPortfolio">Portfolio</span>
                     </li>
                     <li class="nav-item align-bottom">
-                    <span class="nav-link" id="navContact">Contact Me</span>
+                    <span class="nav-link"  data-toggle="collapse" data-target="#head" id="navContact">Contact Me</span>
                     </li>
-                  </ul>
+                </ul>
+                        <div class="icon-link align-bottom" role="navigation" data-toggle="collapse" data-target="#head">
+                            <a class="nav-link" href="https://github.com/NateWolves">
+                                <i class="fab fa-github"></i>
+                                <!-- <img class="rounded-circle" style="height:20px" src="assets/images/github-icon.png"> -->
+                            </a>
+                        </div>
+                 
+                    
+                        <div class="icon-link align-bottom" role="navigation" data-toggle="collapse" data-target="#head">
+                            <a class="nav-link" href="https://www.linkedin.com/in/nathanwolverton/">
+                                <i class="fab fa-linkedin-in"></i>
+                                <!-- <img  id="linkedInIcon" class="rounded-circle" style="height:20px" src="assets/images/linkedin-2.png"> -->
+                            </a>
+                        </div>
+               
+                
                 </div>
-                <div class="nav-item float-right">
-                    <a href="https://github.com/NateWolves">
-                        <img class="rounded-circle" style="height:20px" src="assets/images/github-icon.png">
-                    </a>
-                </div>
-                <div class="nav-item float-right">
-                    <a href="https://www.linkedin.com/in/nathanwolverton/">
-                        <img  id="linkedInIcon" class="rounded-circle" style="height:20px" src="assets/images/linkedin-icon.png">
-                    </a>
-                </div>
+
+
             </div>
 </nav>
             
 <div class="section " id="home">
-    <div id="welcome" class="col-xs-12 col-sm-6 col-lg-4"><p>Hello my name is Nathan and I am a </p><h2>Web Developer</h2><br><p><i>Be sure to have fun in the ball pit.</i></p><p><span id="canvasInstructions"></span></p></div>
+    <!-- <div id="welcome" class="col-xs-12 col-sm-6 col-lg-4"><p>Hello my name is Nathan and I am a </p><h2>Web Developer</h2><br><p><i>Be sure to have fun in the ball pit.</i></p><p><span id="canvasInstructions"></span></p></div> -->
     <canvas></canvas>
 </div>
 
@@ -70,16 +90,17 @@
                     </div>     
               
                 <div class="card col-xs-12 col-sm-5 col-lg-4 ml-auto" id="education">
-                    <div class="card-title"><h3>Education</h3></div>
-                            <div class="card-body degree">
+                    <div class="card-title"><h2>Education</h2></div>
+                            <div class="card-body degree"> 
                                 <h5>University of Kansas</h5>
                                 <span>Web Development Coding Bootcamp, Graduated Spring 2019</span>
-                                <p><span> >JavaScript, Node.js, React.js and more.</span></p>
+                                <p> => Fullstack web development course.</p>
+                                <p><span> <i class="fas fa-database"></i> => <i class="fas fa-server"></i> => <i class="fas fa-laptop"></i> => <i class="fas fa-mobile-alt"></i></span></p>
                             </div>
                             <div class="card-body degree">
                                     <h5>University of Kansas City Missouri</h5>
                                     <span>Bachelors in Business Administration, Graduated Spring 2012</span>
-                                    <p><span> >BBA with an emphasis in Marketing</span></p>
+                                    <p><span> => BBA with an emphasis in Marketing</span></p>
                             </div>
                 </div>
             </div>
@@ -119,7 +140,7 @@
 <div class="section" id="portfolio">
     <div class="buffer"></div>
     <div class="container-fluid">
-      <h2 class="card-title">Portfolio</h2>
+      <h2 class="title">Portfolio</h2>
 
         <div class="row justify-content-center">
 
@@ -135,8 +156,7 @@
             </div>
 
             <div class="card col-xs-12 col-sm-6 col-lg-4  text-white project">
-                    <a href= "https://desolate-lowlands-60473.herokuapp.com/
-                    ">
+                    <a href= "https://desolate-lowlands-60473.herokuapp.com/">
                         <img src="assets/images/beer.jpg" class="card-img" alt="beer">
                         <div class="card-img-overlay">
                                 <h5 class="card-title projectTitle">Beer Logger</h5>
@@ -199,46 +219,43 @@
         </div>    
     </div>
 </div>    
-    <div class="section col-md-12 float-right" id="contact">
-            <div class="buffer"></div>
+<div class="section col-md-12 float-right" id="contact">
+        <div class="buffer"></div>
             <div class="container">
-
                             <div class="card contact-form">
                                 <div class="card-body">
-                                      <h5 class="card-title">Contact Me</h5>
-                                <form method="POST" action="MAILTO:wolverton.nathan@gmail.com">
-                                    <div class="form-group">
-                                      <label for="Nameinput">Name</label>
-                                      <input type="Name" class="form-control" id="InputName" placeholder="Doc Brown">
-                                    </div>
-                                    <div class="form-group">
-                                            <label for="InputEmail1">Email address</label>
-                                            <input type="email" name="from" class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="back2thefuture@yahoo.com">
-                                            <small id="emailHelp" class="form-text text-muted"></small>
-                                    </div>
-                                    <div class="form-group">
-                                            <label for="InputSubject">Subject</label>
-                                            <input type="text" class="form-control" name="subject" id="subject" aria-describedby="emailHelp" placeholder="I need your help Marty">
-                                            <small id="emailHelp" class="form-text text-muted"></small>
-                                    </div>
-                                    <div class="form-group">
-                                                <label for="FormControlTextarea1">Message me</label>
-                                                <textarea class="form-control" id="FormControlTextarea1" rows="4" placeholder="Roads?! Where were going we don't need roads."></textarea>
-                                    </div>
-                                    <button type="submit" value="Send Email" class="btn btn-dark">Send Email</button>
-                                </form>
+                                      <h2 class="card-title">Contact Me</h2>
+                                
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                        <th scope="col" class="text-center" style="padding-top:20px"><h4>Reach Me</h4></th>
+                                        <th scope="col"><i class="fas fa-at fa-3x"></i></th>
+                                    </tr>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row" class="text-center"><a href="mailto:wolverton.nathan@gmail.com?Subject=Great%20Portfolio%20Nathan!" target="_top"><i class="fas fa-envelope-open-text fa-3x"></i></a></th>
+                                            <td><a href="mailto:wolverton.nathan@gmail.com?Subject=Great%20Portfolio%20Nathan!" target="_top" class="readableLink"> => Wolverton.Nathan@gmail.com</a</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center"><a href="https://www.linkedin.com/in/nathanwolverton/"><i class="fab fa-linkedin-in fa-3x"></i></a></th>
+                                            <td><a href="https://www.linkedin.com/in/nathanwolverton/" class="readableLink"> => Linked In</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center"> <a href="https://github.com/NateWolves"><i class="fab fa-github fa-3x"></i></a></th>
+                                            <td><a href="https://github.com/NateWolves" class="readableLink"> => My Github</a></td> 
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 </div>
                             </div>
-                
-                </div>
-        
-
-
+            </div>
     </div>
 
-
-
-
+    <footer class="footer mt-auto py-3">
+                <div>
+                  <p id="footerText">Thank you for visiting!</p>
+                </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

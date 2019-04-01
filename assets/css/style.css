@@ -8,9 +8,14 @@ body {
     font-family: 'Abril Fatface', cursive;
     margin: 0;
 }
+
 a{
-    color:#DCE1DE;
+    color:#e4b363;
 }
+a:hover {
+    color: #EF6461;
+}
+
 * , :after, ::before{
   box-sizing:border-box;
 }
@@ -21,11 +26,11 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb{
-    background-color: #216869;
-    outline: 1px solid #216869;
+    background-color: #e4b363;
+    outline: 1px solid #e4b363;
 }
 body::-webkit-scrollbar-track {
-    background-color: #1f2421;
+    background-color: #313638;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 }
 .row::after{
@@ -37,12 +42,12 @@ body::-webkit-scrollbar-track {
 }
 .card-title {
     border-bottom-style: solid;
-    border-bottom: #216869;
+    border-bottom: #313638;
 
 }
 #home{
     position: relative;
-    background-color: #49A078;
+    background-color: #e0dfd5;
     height: 100vh;
 }
 
@@ -55,10 +60,19 @@ body::-webkit-scrollbar-track {
 }
 #contact{
     height: 100vh;
+    background-color: #e8e9eb;
 }
+.readableLink{
+    color: #313638;
+
+}
+td {
+    text-align: left;
+    vertical-align: middle;
+  }
 .card-title{
     border-bottom-style:solid;
-    border-bottom-color: black;
+    border-bottom-color: #313638;
 }
 .project{
     transition: all 0.3s ease;
@@ -66,10 +80,21 @@ body::-webkit-scrollbar-track {
     filter: grayscale(100%);
 }
 .navbar{
-    background-color: #1f2421;
+    background-color: #313638;
+}
+.footer {
+    background-color: #313638;
+    color: #e0dfd5;
+    text-align: center;
+}
+#footerText {
+    font-size: 10px;
+    vertical-align: text-bottom;
+    padding-top: 20px;
 }
 .nav-link {
-    color: #DCE1DE;
+    color: #e4b363;
+    text-align: center;
 }
 .nav-item{
     border-bottom-style: solid;
@@ -78,12 +103,12 @@ body::-webkit-scrollbar-track {
 .nav-item:hover{
     border-bottom-style: solid;
     cursor: pointer;
-    border-bottom-color: #DCE1DE;
+    border-bottom-color: #e4b363;
 }
-#linkedInIcon {
-    border-style: solid;
-    border-color: white;
-    margin-left: 5px;
+/* aligning our menu icon  */
+#hamburger {
+    padding-top: 5px;
+    color: #e4b363;
 }
 .project{
     margin: 10px 0px  0px 0px;
@@ -100,14 +125,14 @@ body::-webkit-scrollbar-track {
 
 
 .buffer {
-    height:60px;
+    height:65.6px;
 }
 
 #welcome{
     position: absolute;
     top:30%;
     background-color: transparent;
-    color: white;
+    color: #e4b363;
     margin: 0px auto 0px auto;
     text-align: center;
 }
@@ -121,20 +146,22 @@ body::-webkit-scrollbar-track {
     display: inline-block;
     vertical-align: middle;
 }
+
 .skillIcon{
-    
     width: 100px;
     height: auto;
     transition: all 0.3s ease;
     opacity: 0.66;
     filter: grayscale(100%);
 }
+
 .profilePic{
     max-width: 300px;
     transition: all 0.3s ease;
     opacity: 0.66;
     filter: grayscale(100%);
 }
+
 .active{
     filter:none;
     opacity: 1;
@@ -146,4 +173,4 @@ body::-webkit-scrollbar-track {
     content: "";
     clear: both;
     display: table;
-  }
+}

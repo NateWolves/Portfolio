@@ -32,7 +32,7 @@ document.addEventListener("scroll", function(){
     let distanceToProject = (project - topOfPage);
    
 
-    if(distanceToSkills < 600){
+    if(distanceToSkills < 500){
     $(".skillIcon").addClass("active");
     } else {
         $(".skillIcon").removeClass("active");
@@ -56,10 +56,13 @@ document.addEventListener("scroll", function(){
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d');
 
+
+
 // setting initial width and height 
 // previously used inner.width/height
 canvas.width = $("#home").width();
 canvas.height = $("#home").height();
+
 
 
 let mouse = {
@@ -69,10 +72,10 @@ let mouse = {
 
 // Colors that apply to our balls
 const colors = [
-    '#216869',
-    '#9CC5A1',
-    '#1F2421',
-    '#DCE1DE'
+    '#EF6461',
+    '#e4b363',
+    '#e8e9eb',
+    '#313638'
 ];
 
 let mouseIsUp;
@@ -80,8 +83,10 @@ let mouseIsDown = false;
 let isShaken = false;
 let shakex = 0;
 let shakey = 0;
+let isPhone = false;
 
-
+isPhone = detectmob();
+console.log(isPhone);
 
 
 screen.orientation.addEventListener("change", function(e) {
@@ -103,8 +108,7 @@ canvas.addEventListener("mousemove", function(event){
 
 // Adding our motion event for mobile interactivity 
 function handleMotionEvent(event) {
-    isShaken = true;
-    console.log(isShaken);
+
     shakex = event.accelerationIncludingGravity.x  ;
     shakey = event.accelerationIncludingGravity.y ;
     console.log(shakex+ " , "+ shakey);
@@ -140,7 +144,7 @@ function detectmob() {
 
 
 
-if (detectmob()){
+if (isPhone){
     $("#canvasInstructions").text("(Shake your phone.)")
 } else {$("#canvasInstructions").text("(Click and Drag.)")}
 
@@ -224,18 +228,10 @@ function Ball(x, y, dx, dy, radius){
     // passing our values to the object
     this.x = x;
     this.y = y;
-    // if (detectmob()){
-    //     this.velocity ={
-    //         x: shakex,
-    //         y: shakey
-    //     }
-    // } 
-    // else {
     this.velocity = {
         x: dx,
         y: dy
-        };
-    // }
+    };
     this.radius = radius;
     this.color = colors[Math.floor(Math.random() * colors.length)];
     this.mass = radius * .5;
@@ -243,14 +239,14 @@ function Ball(x, y, dx, dy, radius){
 
     this.update = ballArray => {
         this.draw();
-
+        // Determining if a ball collides with another ball
         for ( let i = 0; i < ballArray.length; i++){
             // never comparing a ball to itself
             if(this === ballArray[i]) continue;
 
             let sd = surfaceDistance(this, ballArray[i]);
             let cd = getDistance(this.x, this.y, ballArray[i].x , ballArray[i].y)
-
+            // this allows our balls to lay at rest between each other using surfaceDistance
             if (sd < 0 ) { 
                 //get depth of overlap for x & y (based on ratio of sd/cd to x & y depth/diff),
                 var x_diff = this.x - ballArray[i].x;  // x difference between balls
@@ -278,12 +274,11 @@ function Ball(x, y, dx, dy, radius){
             this.velocity.x = -this.velocity.x;
             this.x = canvas.width - this.radius;
         }
+        // Keeping the ball inside top wall
         if( this.y - this.radius <= 0){
             this.velocity.y = -this.velocity.y;
             this.y = 0 + this.radius;
         }
-
-
         // This is applying the affect of gravity to our object when it collides with the bottom edge
         if (this.y + this.radius + this.velocity.y + shakey >= canvas.height){
             // keeping our balls above the bottom line
@@ -291,28 +286,33 @@ function Ball(x, y, dx, dy, radius){
             // applying friction 
             this.velocity.y = -this.velocity.y * .8;
         }   
-         else if (!detectmob()) {
-            
+         else {
             this.velocity.y += gravity;
-        }
+        };
+
+        //  Adding reaction to the mouse 
         if(getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 4 < 0 && mouseIsDown === true){
             this.velocity.y -= 2;
         }
-    
-        //  Adding reaction to the mouse 
-        if (getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 4 < 0 ){
+        if (getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 4 < 0 && this.opacity <= 1){
             this.opacity = Math.max(.2, this.opacity)
             this.opacity += 0.06;
         } else if ( this.opacity > 0) {
             this.opacity -= 0.07;
-
             this.opacity = Math.max(.2, this.opacity);
+        } else if (isPhone){
+            this.opacity = 1;
+        }
+
+        // Phone response to shake
+        if (isPhone && shakey < 0) {
+            this.velocity = this.velocity * shakey
         }
 
         this.x += this.velocity.x; 
         this.y += this.velocity.y;
-        this.x += shakex;
-        this.y += shakey;
+        // this.x += shakex;
+        // this.y += shakey;
         
     };
 
@@ -335,7 +335,7 @@ let ball;
 function init() {
     ballArray = [];
     for (let i = 0; i < 20; i++){
-        let radius = randomInteger (5, (canvas.width/20));
+        let radius = randomInteger (5, (canvas.width/15));
         let x = randomInteger(radius, canvas.width - radius);
         let y = randomInteger(radius, canvas.height- radius);
         let dx = randomInteger(-1, 1);
@@ -358,11 +358,17 @@ function init() {
 function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0,0, canvas.width, canvas.height);
-    
+    c.font = '20px Abril Fatface';
+    if (!isPhone){
+    c.fillText("Hello my name is Nathan and I am a,", 100, 200)
+    c.fillText("Click and drag on the screen!", 100, 250 );
+    c.font = '30px Abril Fatface'
+    c.fillText("Web Developer", 100, 227);
+    };
     ballArray.forEach( ball => {
         ball.update(ballArray);
     })
-    // detecting collision
+   
  
 }
 

@@ -306,7 +306,7 @@ function Ball(x, y, dx, dy, radius){
 
         // Phone response to shake
         if (isPhone && shakey < 0) {
-            this.velocity = this.velocity * shakey
+            this.velocity -= 1.5
         }
 
         this.x += this.velocity.x; 

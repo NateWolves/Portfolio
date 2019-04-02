@@ -144,7 +144,7 @@ function detectmob() {
 
 
 if (isPhone){
-    $("#welcome").addStyle("display:block")
+    $("#welcome").css("display:block")
 }
 
 

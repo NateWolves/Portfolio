@@ -81,8 +81,8 @@ const colors = [
 let mouseIsUp;
 let mouseIsDown = false;
 let isShaken = false;
-let shakex = 0;
-let shakey = 0;
+let shakeX = 0;
+let shakeY = 0;
 let isPhone = false;
 
 isPhone = detectmob();
@@ -108,9 +108,9 @@ canvas.addEventListener("mousemove", function(event){
 
 // Adding our motion event for mobile interactivity 
 function handleMotionEvent(event) {
-    shakex = event.accelerationIncludingGravity.x  ;
-    shakey = event.accelerationIncludingGravity.y ;
-    console.log(shakex+ " , "+ shakey);
+    shakeX = event.accelerationIncludingGravity.x  ;
+    shakeY = event.accelerationIncludingGravity.y ;
+    console.log(shakeX+ " , "+ shakeY);
 }
 
 window.addEventListener("devicemotion", handleMotionEvent, true);
@@ -143,10 +143,9 @@ function detectmob() {
 }
 
 
-
-// if (isPhone){
-//     $("#canvasInstructions").text("(Shake your phone.)")
-// } else {$("#canvasInstructions").text("(Click and Drag.)")}
+if (isPhone){
+    $("#welcome").addStyle("display:block")
+}
 
 
 // takes an array of colors and returns a random color
@@ -266,11 +265,11 @@ function Ball(x, y, dx, dy, radius){
         }
         // Keeping the ball inside the left wall 
         if (this.x - this.radius <= 0 ) {
-            this.velocity.x = -this.velocity.x -shakex;
+            this.velocity.x = -this.velocity.x -shakeX;
             this.x = 0 + this.radius;
         }
         // Keeping the ball inside the right wall
-        if (this.x + this.radius + this.velocity.x + shakex >= canvas.width){
+        if (this.x + this.radius + this.velocity.x + shakeX >= canvas.width){
             this.velocity.x = -this.velocity.x;
             this.x = canvas.width - this.radius;
         }
@@ -280,7 +279,7 @@ function Ball(x, y, dx, dy, radius){
             this.y = 0 + this.radius;
         }
         // This is applying the affect of gravity to our object when it collides with the bottom edge
-        if (this.y + this.radius + this.velocity.y + shakey >= canvas.height){
+        if (this.y + this.radius + this.velocity.y + shakeY >= canvas.height){
             // keeping our balls above the bottom line
             this.y = canvas.height - this.radius;
             // applying friction 
@@ -305,14 +304,14 @@ function Ball(x, y, dx, dy, radius){
         }
 
         // Phone response to shake
-        if (isPhone && shakey < 0) {
-            this.velocity -= 2
+        if (isPhone && shakeY < 0) {
+            this.velocity.y -= 2
         }
 
         this.x += this.velocity.x; 
         this.y += this.velocity.y;
-        // this.x += shakex;
-        // this.y += shakey;
+        // this.x += shakeX;
+        // this.y += shakeY;
         
     };
 

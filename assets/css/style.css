@@ -129,6 +129,7 @@ td {
 }
 
 #welcome{
+    display: none;
     position: absolute;
     top:30%;
     background-color: transparent;
@@ -136,6 +137,7 @@ td {
     margin: 0px auto 0px auto;
     text-align: center;
 }
+
 
 #skillList{
     list-style: none;

@@ -307,7 +307,8 @@ function Ball(x, y, dx, dy, radius){
             this.velocity.y -= 2
         }
         if (isPhone && Math.abs(shakeX) > 2){
-            this.velocity.x += (shakeX * -.5)
+            // math.sign is returning 1, -1, or 0
+            this.velocity.x += Math.sign(shakeX)
         }
 
         this.x += this.velocity.x; 
@@ -358,12 +359,12 @@ function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0,0, canvas.width, canvas.height);
     c.font = '20px Abril Fatface';
-    if (!isPhone){
+    // if (!isPhone){
     c.fillText("Hello my name is Nathan and I am a,", 100, 200)
     c.fillText("Click and drag on the screen!", 100, 250 );
     c.font = '30px Abril Fatface'
     c.fillText("Web Developer", 100, 227);
-    };
+    // };
     ballArray.forEach( ball => {
         ball.update(ballArray);
     })

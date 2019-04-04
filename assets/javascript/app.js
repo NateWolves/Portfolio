@@ -308,7 +308,7 @@ function Ball(x, y, dx, dy, radius){
         }
         if (isPhone && Math.abs(shakeX) > 2){
             // math.sign is returning 1, -1, or 0
-            this.velocity.x += Math.sign(shakeX)
+            this.velocity.x += Math.sign(shakeX) * -1;
         }
 
         this.x += this.velocity.x; 
@@ -334,7 +334,7 @@ let ballArray;
 let ball;
 function init() {
     ballArray = [];
-    for (let i = 0; i < 20; i++){
+    for (let i = 0; i < 25; i++){
         let radius = randomInteger (5, (canvas.width/15));
         let x = randomInteger(radius, canvas.width - radius);
         let y = randomInteger(radius, canvas.height- radius);

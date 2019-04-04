@@ -127,9 +127,14 @@ td {
 .buffer {
     height:65.6px;
 }
-
-#welcome{
+.hide {
     display: none;
+}
+#show{
+    display: block;
+}
+
+#welcome{  
     position: absolute;
     top:30%;
     background-color: transparent;

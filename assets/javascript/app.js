@@ -83,10 +83,10 @@ let mouseIsDown = false;
 let isShaken = false;
 let shakeX = 0;
 let shakeY = 0;
-let isPhone = false;
 
+let isPhone = false;
 isPhone = detectmob();
-console.log(isPhone);
+
 
 
 screen.orientation.addEventListener("change", function(e) {
@@ -108,9 +108,8 @@ canvas.addEventListener("mousemove", function(event){
 
 // Adding our motion event for mobile interactivity 
 function handleMotionEvent(event) {
-    shakeX = event.accelerationIncludingGravity.x  ;
+    shakeX = event.accelerationIncludingGravity.x ;
     shakeY = event.accelerationIncludingGravity.y ;
-    console.log(shakeX+ " , "+ shakeY);
 }
 
 window.addEventListener("devicemotion", handleMotionEvent, true);
@@ -144,7 +143,7 @@ function detectmob() {
 
 
 if (isPhone){
-    $("#welcome").css("display:block")
+    $("#welcome").attr('id', 'show');
 }
 
 
@@ -307,12 +306,13 @@ function Ball(x, y, dx, dy, radius){
         if (isPhone && shakeY < 0) {
             this.velocity.y -= 2
         }
+        if (isPhone && Math.abs(shakeX) > 2){
+            this.velocity.x += (shakeX * .5)
+        }
 
         this.x += this.velocity.x; 
         this.y += this.velocity.y;
-        // this.x += shakeX;
-        // this.y += shakeY;
-        
+       
     };
 
     this.draw = () => {

@@ -307,7 +307,7 @@ function Ball(x, y, dx, dy, radius){
             this.velocity.y -= 2
         }
         if (isPhone && Math.abs(shakeX) > 2){
-            this.velocity.x += (shakeX * .5)
+            this.velocity.x += (shakeX * -.5)
         }
 
         this.x += this.velocity.x; 

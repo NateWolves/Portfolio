@@ -123,7 +123,9 @@ td {
     text-align: center;
     border-style: none;
 }
-
+.readable {
+    background-color: rgba(49, 54, 56, .75)
+}
 
 .buffer {
     height:65.6px;

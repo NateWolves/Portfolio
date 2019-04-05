@@ -359,12 +359,12 @@ function animate() {
     requestAnimationFrame(animate);
     c.clearRect(0,0, canvas.width, canvas.height);
     c.font = '20px Abril Fatface';
-    // if (!isPhone){
+    if (!isPhone){
     c.fillText("Hello my name is Nathan and I am a,", 100, 200)
     c.fillText("Click and drag on the screen!", 100, 250 );
     c.font = '30px Abril Fatface'
     c.fillText("Web Developer", 100, 227);
-    // };
+    };
     ballArray.forEach( ball => {
         ball.update(ballArray);
     })

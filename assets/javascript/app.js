@@ -143,7 +143,8 @@ function detectmob() {
 
 
 if (isPhone){
-    $("#welcome").attr('id', 'show');
+    $("#welcome").removeClass('hide')
+    $("#welcome").addClass('show');
 }
 
 

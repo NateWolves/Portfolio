@@ -360,10 +360,10 @@ function animate() {
     c.clearRect(0,0, canvas.width, canvas.height);
     c.font = '20px Abril Fatface';
     if (!isPhone){
-    c.fillText("Hello my name is Nathan and I am a,", 100, 200)
-    c.fillText("Click and drag on the screen!", 100, 250 );
+    c.fillText("Hello my name is Nathan, and I am a", 100, 200)
+    c.fillText("Click and drag on the screen!", 100, 275 );
     c.font = '30px Abril Fatface'
-    c.fillText("Web Developer", 100, 227);
+    c.fillText("Web Developer", 100, 240);
     };
     ballArray.forEach( ball => {
         ball.update(ballArray);

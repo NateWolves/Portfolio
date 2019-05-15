@@ -293,15 +293,16 @@ function Ball(x, y, dx, dy, radius){
         if(getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 4 < 0 && mouseIsDown === true){
             this.velocity.y -= 2;
         }
-        if (getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 4 < 0 && this.opacity <= 1){
+        if(isPhone){
+            this.opacity = 1;
+        }
+        else if (getDistance(mouse.x, mouse.y, this.x , this.y) - this.radius * 4 < 0 && this.opacity <= 1){
             this.opacity = Math.max(.2, this.opacity)
             this.opacity += 0.06;
         } else if ( this.opacity > 0) {
             this.opacity -= 0.07;
             this.opacity = Math.max(.2, this.opacity);
-        } else if (isPhone){
-            this.opacity = 1;
-        }
+        }; 
 
         // Phone response to shake
         if (isPhone && shakeY < 0) {
@@ -335,8 +336,8 @@ let ballArray;
 let ball;
 function init() {
     ballArray = [];
-    for (let i = 0; i < 25; i++){
-        let radius = randomInteger (5, (canvas.width/15));
+    for (let i = 0; i < 21; i++){
+        let radius = randomInteger (15, (canvas.width/15));
         let x = randomInteger(radius, canvas.width - radius);
         let y = randomInteger(radius, canvas.height- radius);
         let dx = randomInteger(-1, 1);
@@ -355,6 +356,7 @@ function init() {
         }
         ballArray.push(new Ball(x, y, dx, dy, radius))
     }
+
 };
 function animate() {
     requestAnimationFrame(animate);

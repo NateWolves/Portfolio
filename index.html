@@ -58,7 +58,7 @@
 </nav>
             
 <div class="section " id="home">
-    <div id="welcome" class="col-xs-12 col-sm-6 col-lg-4 hide"><p>Hello my name is Nathan and I am a </p><h2>Web Developer</h2><br><p>Be sure to shake your phone!</p></div>
+    <div id="welcome" class="col-xs-12 col-sm-6 col-lg-4 hide"><p>Hello my name is Nathan and I am a </p><h2>Web Developer</h2><br><p>Be sure to tilt your phone!</p></div>
     <canvas></canvas>
 </div>
 
@@ -85,7 +85,7 @@
                                 <h5>University of Kansas</h5>
                                 <span>Web Development Coding Bootcamp, Graduated Spring 2019</span>
                                 <p>=> Fullstack web development course.</p>
-                                <p><span> <i class="fas fa-database"></i> => <i class="fas fa-server"></i> => <i class="fas fa-laptop"></i> => <i class="fas fa-mobile-alt"></i></span></p>
+                                <p>=> MERN {<span> <i class="fas fa-database"></i> => <i class="fas fa-server"></i> => <i class="fas fa-laptop"></i> => <i class="fas fa-mobile-alt"></i> </span> }</p>
                             </div>
                             <div class="card-body degree">
                                     <h5>University of Kansas City Missouri</h5>
@@ -138,18 +138,71 @@
         <div class="row justify-content-center">
 
                 <div class="card col-xs-12 col-sm-6 col-lg-4 text-white project">
-                <a href= "https://tiffanykeller.github.io/projectone/index.html" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/KCCW.png" class="card-img" alt="Map with markers">
+                <a class="modalLink"  data-toggle="modal" data-target="#modal1">
+                    <img src="assets/images/map-dark-style.PNG" class="card-img" alt="Map with markers">
                     <div class="card-img-overlay">
-                          <h5 class="card-title projectTitle readable rounded">Neighborhood Watch</h5>
+                          <h5 class="card-title projectTitle readable rounded">Neighborhood Message</h5>
                           <p class="card-text projectDesc readable rounded" >Communicate with your neighbors with an interactive map.</p>
                           
                     </div>
                 </a>
             </div>
-
+            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modal1Title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered " role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal1Title">Neighborhood Message</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                     <div class="fluid-container">
+                       <div class="row">
+                         <div class="col-sm-8 slideshow" id="slides1">
+                          <div id="carousel1" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                              <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+                              <li data-target="#carousel1" data-slide-to="1"></li>
+                              <li data-target="#carousel1" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img class="d-block w-100 carouselProjectPic" src="assets/images/KCCW.png" alt="First slide">
+                              </div>
+                              <div class="carousel-item">
+                                <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+                              </div>
+                              <div class="carousel-item">
+                                <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+                              </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </div>
+                         </div>
+                         <div class="col-sm-4 modalIcons">
+                           <h6>Technologies Used</h6>
+                         </div>
+                       </div>
+                       <div class="modalDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                     </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="https://github.com/NateWolves/neighborhoodWatch"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Launch Site</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <div class="card col-xs-12 col-sm-6 col-lg-4  text-white project">
-                    <a href= "https://desolate-lowlands-60473.herokuapp.com/" target="_blank" rel="noopener noreferrer">
+                    <a class="modalLink" data-toggle="modal" data-target="#modal2">
                         <img src="assets/images/beer.jpg" class="card-img" alt="beer">
                         <div class="card-img-overlay">
                                 <h5 class="card-title projectTitle readable rounded">Beer Logger</h5>
@@ -158,17 +211,125 @@
                         </div>
                     </a>
             </div>
+            <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2Title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered " role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal2Title">Beer Logger</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="fluid-container">
+                        <div class="row">
+                          <div class="col-sm-8 slideshow" id="slides1">
+                           <div id="carousel2" class="carousel slide" data-ride="carousel">
+                             <ol class="carousel-indicators">
+                               <li data-target="#carousel2" data-slide-to="0" class="active"></li>
+                               <li data-target="#carousel2" data-slide-to="1"></li>
+                               <li data-target="#carousel2" data-slide-to="2"></li>
+                             </ol>
+                             <div class="carousel-inner">
+                               <div class="carousel-item active">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+                               </div>
+                             </div>
+                             <a class="carousel-control-prev" href="#carousel2" role="button" data-slide="prev">
+                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Previous</span>
+                             </a>
+                             <a class="carousel-control-next" href="#carousel2" role="button" data-slide="next">
+                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Next</span>
+                             </a>
+                           </div>
+                          </div>
+                          <div class="col-sm-4 modalIcons">
+                            <h6>Technologies Used</h6>
+                          </div>
+                        </div>
+                        <div class="modalDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                      <a href= "https://desolate-lowlands-60473.herokuapp.com/" target="_blank" rel="noopener noreferrer" class="btn">Launch Site</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <div class="card col-xs-12 col-sm-6 col-lg-4 text-white project">
                 <a href= "https://natewolves.github.io/Giphy/" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/GiphyProject.png" class="card-img" alt="Multiple gifs">
+                    <img src="assets/images/Giphy.jpg" class="card-img" alt="Multiple gifs">
                     <div class="card-img-overlay">
-                            <h5 class="card-title projectTitle readable rounded" style="background">Giphy Buttons</h5>
+                            <h5 class="card-title projectTitle readable rounded">Giphy Buttons</h5>
                             <p class="card-text projectDesc readable rounded">Find gifs by creating buttons. Then save your favorites to local storage.</p>
                             
                     </div>
                 </a>
             </div>
+            <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="modal3Title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered " role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal3Title">Giphy Buttons</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="fluid-container">
+                        <div class="row">
+                          <div class="col-sm-8 slideshow" id="slides1">
+                           <div id="carousel3" class="carousel slide" data-ride="carousel">
+                             <ol class="carousel-indicators">
+                               <li data-target="#carousel3" data-slide-to="0" class="active"></li>
+                               <li data-target="#carousel3" data-slide-to="1"></li>
+                               <li data-target="#carousel3" data-slide-to="2"></li>
+                             </ol>
+                             <div class="carousel-inner">
+                               <div class="carousel-item active">
+                                 <img class="d-block w-100 carouselProjectPic" src="assets/images/GiphyProject.png" alt="First slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+                               </div>
+                             </div>
+                             <a class="carousel-control-prev" href="#carousel3" role="button" data-slide="prev">
+                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Previous</span>
+                             </a>
+                             <a class="carousel-control-next" href="#carousel3" role="button" data-slide="next">
+                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Next</span>
+                             </a>
+                           </div>
+                          </div>
+                          <div class="col-sm-4 modalIcons">
+                            <h6>Technologies Used</h6>
+                          </div>
+                        </div>
+                        <div class="modalDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
         </div>
 
@@ -184,10 +345,64 @@
                     </div>
                 </a>
             </div>
+            <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="modal4Title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered " role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal4Title">Animal Trivia</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="fluid-container">
+                        <div class="row">
+                          <div class="col-sm-8 slideshow" id="slides1">
+                           <div id="carousel4" class="carousel slide" data-ride="carousel">
+                             <ol class="carousel-indicators">
+                               <li data-target="#carousel4" data-slide-to="0" class="active"></li>
+                               <li data-target="#carousel4" data-slide-to="1"></li>
+                               <li data-target="#carousel4" data-slide-to="2"></li>
+                             </ol>
+                             <div class="carousel-inner">
+                               <div class="carousel-item active">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+                               </div>
+                             </div>
+                             <a class="carousel-control-prev" href="#carousel4" role="button" data-slide="prev">
+                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Previous</span>
+                             </a>
+                             <a class="carousel-control-next" href="#carousel4" role="button" data-slide="next">
+                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Next</span>
+                             </a>
+                           </div>
+                          </div>
+                          <div class="col-sm-4 modalIcons">
+                            <h6>Technologies Used</h6>
+                          </div>
+                        </div>
+                        <div class="modalDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <div class="card col-xs-12 col-sm-6 col-lg-4 text-white project">
                 <a href="https://arcane-harbor-34033.herokuapp.com/" target="_blank" rel="noopener noreferrer">
-                    <img src="assets/images/friendFinder.png" class="card-img" alt="Friend Survey">
+                    <img src="assets/images/Its-Always-Sunny-In-Philadelphia.png" class="card-img" alt="Friend Survey">
                     <div class="card-img-overlay">
                         <h5 class="card-title projectTitle readable rounded ">Friend Finder</h5>
                         <p class="card-text projectDesc readable rounded">Take the survey and find a like minded friend.</p>
@@ -195,6 +410,60 @@
                     </div>
                 </a>
             </div>
+            <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="modal5Title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered " role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal5Title">Friend Finder</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="fluid-container">
+                        <div class="row">
+                          <div class="col-sm-8 slideshow" id="slides1">
+                           <div id="carousel5" class="carousel slide" data-ride="carousel">
+                             <ol class="carousel-indicators">
+                               <li data-target="#carousel5" data-slide-to="0" class="active"></li>
+                               <li data-target="#carousel5" data-slide-to="1"></li>
+                               <li data-target="#carousel5" data-slide-to="2"></li>
+                             </ol>
+                             <div class="carousel-inner">
+                               <div class="carousel-item active">
+                                 <img class="d-block w-100 carouselProjectPic" src="assets/images/friendFinder.png" alt="First slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+                               </div>
+                             </div>
+                             <a class="carousel-control-prev" href="#carousel5" role="button" data-slide="prev">
+                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Previous</span>
+                             </a>
+                             <a class="carousel-control-next" href="#carousel5" role="button" data-slide="next">
+                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Next</span>
+                             </a>
+                           </div>
+                          </div>
+                          <div class="col-sm-4 modalIcons">
+                            <h6>Technologies Used</h6>
+                          </div>
+                        </div>
+                        <div class="modalDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <div class="card col-xs-12 col-sm-6 col-lg-4 text-white project" >
                 <a href="https://natewolves.github.io/Word-Guess-Game/" target="_blank" rel="noopener noreferrer">
@@ -206,6 +475,60 @@
                     </div>
                 </a>
             </div>
+            <div class="modal fade" id="modal6" tabindex="-1" role="dialog" aria-labelledby="modal6Title" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered " role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal6Title">D&D Word Guess</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="fluid-container">
+                        <div class="row">
+                          <div class="col-sm-8 slideshow" id="slides1">
+                           <div id="carousel6" class="carousel slide" data-ride="carousel">
+                             <ol class="carousel-indicators">
+                               <li data-target="#carousel6" data-slide-to="0" class="active"></li>
+                               <li data-target="#carousel6" data-slide-to="1"></li>
+                               <li data-target="#carousel6" data-slide-to="2"></li>
+                             </ol>
+                             <div class="carousel-inner">
+                               <div class="carousel-item active">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+                               </div>
+                               <div class="carousel-item">
+                                 <img class="d-block w-100 carouselProjectPic" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+                               </div>
+                             </div>
+                             <a class="carousel-control-prev" href="#carousel6" role="button" data-slide="prev">
+                               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Previous</span>
+                             </a>
+                             <a class="carousel-control-next" href="#carousel6" role="button" data-slide="next">
+                               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                               <span class="sr-only">Next</span>
+                             </a>
+                           </div>
+                          </div>
+                          <div class="col-sm-4 modalIcons">
+                            <h6>Technologies Used</h6>
+                          </div>
+                        </div>
+                        <div class="modalDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                      <a href="https://natewolves.github.io/neighborhoodWatch/"  target="_blank" rel="noopener noreferrer" class="btn">Github Code</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
         </div>
          </div>
@@ -229,16 +552,20 @@
                                             <td><a href="mailto:wolverton.nathan@gmail.com?Subject=Great%20Portfolio%20Nathan!" target="_top" class="readableLink"> => Wolverton.Nathan@gmail.com</a</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row" class="text-center"><a href="https://www.linkedin.com/in/nathanwolverton/"><i class="fab fa-linkedin-in fa-3x"></i></a></th>
-                                            <td><a href="https://www.linkedin.com/in/nathanwolverton/" class="readableLink"> => Linked In</a></td>
+                                            <th scope="row" class="text-center"><a href="https://www.linkedin.com/in/nathanwolverton/"target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in fa-3x"></i></a></th>
+                                            <td><a href="https://www.linkedin.com/in/nathanwolverton/" target="_blank" rel="noopener noreferrer"class="readableLink"> => LinkedIn</a></td>
                                         </tr>
                                         <tr>
-                                            <th scope="row" class="text-center"> <a href="https://github.com/NateWolves"><i class="fab fa-github fa-3x"></i></a></th>
-                                            <td><a href="https://github.com/NateWolves" class="readableLink"> => My Github</a></td> 
+                                            <th scope="row" class="text-center"> <a href="https://github.com/NateWolves" target="_blank" rel="noopener noreferrer"><i class="fab fa-github fa-3x"></i></a></th>
+                                            <td><a href="https://github.com/NateWolves" target="_blank" rel="noopener noreferrer" class="readableLink"> => Github</a></td> 
                                         </tr>
                                         <tr>
-                                            <th scope="row" class="text-center"> <a href="https://twitter.com/WolvesNate"><i class="fab fa-twitter fa-3x"></i></a></th>
-                                            <td><a href="https://twitter.com/WolvesNate" class="readableLink"> => My Twitter</a></td> 
+                                            <th scope="row" class="text-center"> <a href="https://twitter.com/WolvesNate" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter fa-3x"></i></a></th>
+                                            <td><a href="https://twitter.com/WolvesNate" target="_blank" rel="noopener noreferrer" class="readableLink"> => Twitter</a></td> 
+                                        </tr>
+                                        <tr>
+                                            <th scope="row" class="text-center"> <a href="./assets/images/Nathan Wolverton (1).pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-invoice fa-3x"></i></a></th>
+                                            <td><a href="./assets/images/Nathan Wolverton (1).pdf" target="_blank" rel="noopener noreferrer" class="readableLink"> => Resume</a></td> 
                                         </tr>
                                     </tbody>
                                 </table>
